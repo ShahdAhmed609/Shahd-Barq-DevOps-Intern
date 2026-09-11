@@ -1,0 +1,220 @@
+WARNING: 1 malformed line(s) in logs/access.log:
+  Line 311: {"timestamp":"2026-08-20T11:12:48Z","request_id": -- Expecting value: line 1 column 50 (char 49)
+WARNING: 1 malformed line(s) in logs/application.log:
+  Line 401: {"timestamp":"2026-08-20T11:17:00Z","event": -- Expecting value: line 1 column 45 (char 44)
+access.log entries: 725
+application.log entries: 729
+
+--- access.log status code counts ---
+200: 620
+404: 10
+502: 40
+503: 47
+504: 8
+
+--- access.log requests per path ---
+/: 123
+/records: 119
+/instance: 119
+/health: 118
+/ready: 118
+/counter: 118
+/missing: 10
+
+--- application.log event types ---
+http_request: 682
+dependency_error: 47
+
+--- application.log level counts ---
+WARN: 57
+INFO: 625
+ERROR: 47
+
+--- Non-200 access.log entries, chronological ---
+2026-08-20T11:05:02.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000122
+2026-08-20T11:05:12.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000126
+2026-08-20T11:05:17.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000128
+2026-08-20T11:05:27.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000132
+2026-08-20T11:05:32.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000134
+2026-08-20T11:05:42.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000138
+2026-08-20T11:05:47.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000140
+2026-08-20T11:05:57.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000144
+2026-08-20T11:06:02.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000146
+2026-08-20T11:06:12.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000150
+2026-08-20T11:06:17.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000152
+2026-08-20T11:06:27.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000156
+2026-08-20T11:06:32.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000158
+2026-08-20T11:06:42.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000162
+2026-08-20T11:06:47.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000164
+2026-08-20T11:06:57.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000168
+2026-08-20T11:07:02.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000170
+2026-08-20T11:07:12.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000174
+2026-08-20T11:07:17.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000176
+2026-08-20T11:07:27.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000180
+2026-08-20T11:07:32.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000182
+2026-08-20T11:07:42.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000186
+2026-08-20T11:07:47.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000188
+2026-08-20T11:07:57.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000192
+2026-08-20T11:08:02.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000194
+2026-08-20T11:08:12.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000198
+2026-08-20T11:08:17.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000200
+2026-08-20T11:08:27.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000204
+2026-08-20T11:08:32.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000206
+2026-08-20T11:08:42.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000210
+2026-08-20T11:08:47.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000212
+2026-08-20T11:08:57.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000216
+2026-08-20T11:09:02.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000218
+2026-08-20T11:09:12.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000222
+2026-08-20T11:09:17.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000224
+2026-08-20T11:09:27.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000228
+2026-08-20T11:09:32.503Z  502  /health       upstream=172.23.0.12:8080  req_id=lab-000230
+2026-08-20T11:09:42.503Z  502  /records      upstream=172.23.0.12:8080  req_id=lab-000234
+2026-08-20T11:09:47.503Z  502  /counter      upstream=172.23.0.12:8080  req_id=lab-000236
+2026-08-20T11:09:57.503Z  502  /             upstream=172.23.0.12:8080  req_id=lab-000240
+2026-08-20T11:12:09.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000292
+2026-08-20T11:12:12.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000293
+2026-08-20T11:12:19.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000296
+2026-08-20T11:12:22.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000297
+2026-08-20T11:12:39.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000304
+2026-08-20T11:12:42.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000305
+2026-08-20T11:12:49.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000308
+2026-08-20T11:12:52.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000309
+2026-08-20T11:13:09.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000316
+2026-08-20T11:13:19.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000320
+2026-08-20T11:13:22.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000321
+2026-08-20T11:13:39.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000328
+2026-08-20T11:13:42.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000329
+2026-08-20T11:13:49.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000332
+2026-08-20T11:13:52.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000333
+2026-08-20T11:14:09.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000340
+2026-08-20T11:14:12.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000341
+2026-08-20T11:14:19.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000344
+2026-08-20T11:14:22.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000345
+2026-08-20T11:14:39.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000352
+2026-08-20T11:14:42.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000353
+2026-08-20T11:14:49.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000356
+2026-08-20T11:14:52.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000357
+2026-08-20T11:15:09.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000364
+2026-08-20T11:15:12.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000365
+2026-08-20T11:15:19.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000368
+2026-08-20T11:15:22.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000369
+2026-08-20T11:15:39.525Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000376
+2026-08-20T11:15:42.025Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000377
+2026-08-20T11:15:49.525Z  503  /counter      upstream=172.23.0.12:8080  req_id=lab-000380
+2026-08-20T11:15:52.025Z  503  /counter      upstream=172.23.0.11:8080  req_id=lab-000381
+2026-08-20T11:20:07.541Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000484
+2026-08-20T11:20:10.041Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000485
+2026-08-20T11:20:12.541Z  503  /records      upstream=172.23.0.12:8080  req_id=lab-000486
+2026-08-20T11:20:15.041Z  503  /records      upstream=172.23.0.11:8080  req_id=lab-000487
+2026-08-20T11:20:37.541Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000496
+2026-08-20T11:20:40.041Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000497
+2026-08-20T11:20:42.541Z  503  /records      upstream=172.23.0.12:8080  req_id=lab-000498
+2026-08-20T11:20:45.041Z  503  /records      upstream=172.23.0.11:8080  req_id=lab-000499
+2026-08-20T11:21:07.541Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000508
+2026-08-20T11:21:10.041Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000509
+2026-08-20T11:21:12.541Z  503  /records      upstream=172.23.0.12:8080  req_id=lab-000510
+2026-08-20T11:21:15.041Z  503  /records      upstream=172.23.0.11:8080  req_id=lab-000511
+2026-08-20T11:21:37.541Z  503  /ready        upstream=172.23.0.12:8080  req_id=lab-000520
+2026-08-20T11:21:40.041Z  503  /ready        upstream=172.23.0.11:8080  req_id=lab-000521
+2026-08-20T11:21:42.541Z  503  /records      upstream=172.23.0.12:8080  req_id=lab-000522
+2026-08-20T11:21:45.041Z  503  /records      upstream=172.23.0.11:8080  req_id=lab-000523
+2026-08-20T11:25:14.501Z  504  /records      upstream=172.23.0.12:8080  req_id=lab-000606
+2026-08-20T11:25:17.001Z  504  /records      upstream=172.23.0.11:8080  req_id=lab-000607
+2026-08-20T11:25:44.501Z  504  /records      upstream=172.23.0.12:8080  req_id=lab-000618
+2026-08-20T11:25:47.001Z  504  /records      upstream=172.23.0.11:8080  req_id=lab-000619
+2026-08-20T11:26:14.501Z  504  /records      upstream=172.23.0.12:8080  req_id=lab-000630
+2026-08-20T11:26:17.001Z  504  /records      upstream=172.23.0.11:8080  req_id=lab-000631
+2026-08-20T11:26:44.501Z  504  /records      upstream=172.23.0.12:8080  req_id=lab-000642
+2026-08-20T11:26:47.001Z  504  /records      upstream=172.23.0.11:8080  req_id=lab-000643
+
+--- dependency_error events, chronological ---
+2026-08-20T11:12:09.524Z  dependency=redis  instance=app-02  req_id=lab-000292
+2026-08-20T11:12:12.024Z  dependency=redis  instance=app-01  req_id=lab-000293
+2026-08-20T11:12:19.524Z  dependency=redis  instance=app-02  req_id=lab-000296
+2026-08-20T11:12:22.024Z  dependency=redis  instance=app-01  req_id=lab-000297
+2026-08-20T11:12:39.524Z  dependency=redis  instance=app-02  req_id=lab-000304
+2026-08-20T11:12:42.024Z  dependency=redis  instance=app-01  req_id=lab-000305
+2026-08-20T11:12:49.524Z  dependency=redis  instance=app-02  req_id=lab-000308
+2026-08-20T11:12:52.024Z  dependency=redis  instance=app-01  req_id=lab-000309
+2026-08-20T11:13:09.524Z  dependency=redis  instance=app-02  req_id=lab-000316
+2026-08-20T11:13:19.524Z  dependency=redis  instance=app-02  req_id=lab-000320
+2026-08-20T11:13:22.024Z  dependency=redis  instance=app-01  req_id=lab-000321
+2026-08-20T11:13:39.524Z  dependency=redis  instance=app-02  req_id=lab-000328
+2026-08-20T11:13:42.024Z  dependency=redis  instance=app-01  req_id=lab-000329
+2026-08-20T11:13:49.524Z  dependency=redis  instance=app-02  req_id=lab-000332
+2026-08-20T11:13:52.024Z  dependency=redis  instance=app-01  req_id=lab-000333
+2026-08-20T11:14:09.524Z  dependency=redis  instance=app-02  req_id=lab-000340
+2026-08-20T11:14:12.024Z  dependency=redis  instance=app-01  req_id=lab-000341
+2026-08-20T11:14:19.524Z  dependency=redis  instance=app-02  req_id=lab-000344
+2026-08-20T11:14:22.024Z  dependency=redis  instance=app-01  req_id=lab-000345
+2026-08-20T11:14:39.524Z  dependency=redis  instance=app-02  req_id=lab-000352
+2026-08-20T11:14:42.024Z  dependency=redis  instance=app-01  req_id=lab-000353
+2026-08-20T11:14:49.524Z  dependency=redis  instance=app-02  req_id=lab-000356
+2026-08-20T11:14:52.024Z  dependency=redis  instance=app-01  req_id=lab-000357
+2026-08-20T11:15:09.524Z  dependency=redis  instance=app-02  req_id=lab-000364
+2026-08-20T11:15:12.024Z  dependency=redis  instance=app-01  req_id=lab-000365
+2026-08-20T11:15:19.524Z  dependency=redis  instance=app-02  req_id=lab-000368
+2026-08-20T11:15:22.024Z  dependency=redis  instance=app-01  req_id=lab-000369
+2026-08-20T11:15:39.524Z  dependency=redis  instance=app-02  req_id=lab-000376
+2026-08-20T11:15:42.024Z  dependency=redis  instance=app-01  req_id=lab-000377
+2026-08-20T11:15:49.524Z  dependency=redis  instance=app-02  req_id=lab-000380
+2026-08-20T11:15:52.024Z  dependency=redis  instance=app-01  req_id=lab-000381
+2026-08-20T11:20:07.540Z  dependency=postgres  instance=app-02  req_id=lab-000484
+2026-08-20T11:20:10.040Z  dependency=postgres  instance=app-01  req_id=lab-000485
+2026-08-20T11:20:12.540Z  dependency=postgres  instance=app-02  req_id=lab-000486
+2026-08-20T11:20:15.040Z  dependency=postgres  instance=app-01  req_id=lab-000487
+2026-08-20T11:20:37.540Z  dependency=postgres  instance=app-02  req_id=lab-000496
+2026-08-20T11:20:40.040Z  dependency=postgres  instance=app-01  req_id=lab-000497
+2026-08-20T11:20:42.540Z  dependency=postgres  instance=app-02  req_id=lab-000498
+2026-08-20T11:20:45.040Z  dependency=postgres  instance=app-01  req_id=lab-000499
+2026-08-20T11:21:07.540Z  dependency=postgres  instance=app-02  req_id=lab-000508
+2026-08-20T11:21:10.040Z  dependency=postgres  instance=app-01  req_id=lab-000509
+2026-08-20T11:21:12.540Z  dependency=postgres  instance=app-02  req_id=lab-000510
+2026-08-20T11:21:15.040Z  dependency=postgres  instance=app-01  req_id=lab-000511
+2026-08-20T11:21:37.540Z  dependency=postgres  instance=app-02  req_id=lab-000520
+2026-08-20T11:21:40.040Z  dependency=postgres  instance=app-01  req_id=lab-000521
+2026-08-20T11:21:42.540Z  dependency=postgres  instance=app-02  req_id=lab-000522
+2026-08-20T11:21:45.040Z  dependency=postgres  instance=app-01  req_id=lab-000523
+
+--- Q1: duplicate request_ids in access.log ---
+Total access.log entries: 725
+Distinct request_ids: 720
+Duplicate request_ids: 5
+{'lab-000121': 2, 'lab-000241': 2, 'lab-000361': 2, 'lab-000481': 2, 'lab-000601': 2}
+
+--- Q2: distinct client requests (dedup) ---
+Distinct client requests (access.log): 720
+
+--- Q3: final client status counts + error rate ---
+Denominator (total valid access.log entries): 725
+200: 620 (85.52%)
+404: 10 (1.38%)
+502: 40 (5.52%)
+503: 47 (6.48%)
+504: 8 (1.10%)
+Error rate (non-200 / total): 105/725 = 14.48%
+
+--- Q5: latency percentiles (request_time, seconds) ---
+n=725
+median request_time: 0.054s
+p95 request_time (nearest-rank method): 2.001s
+
+--- Q6: retried requests ---
+Requests that hit multiple upstreams (retried): 19
+Of those, succeeded (status 200): 19
+
+--- Q1b: duplicate line details ---
+lab-000121: 2 identical lines, timestamp=2026-08-20T11:05:00.055Z, path=/
+lab-000241: 2 identical lines, timestamp=2026-08-20T11:10:00.015Z, path=/
+lab-000361: 2 identical lines, timestamp=2026-08-20T11:15:00.055Z, path=/
+lab-000481: 2 identical lines, timestamp=2026-08-20T11:20:00.015Z, path=/
+lab-000601: 2 identical lines, timestamp=2026-08-20T11:25:00.055Z, path=/
+
+--- Q3b: deduplicated status counts (720 distinct requests) ---
+Denominator (distinct request_ids): 720
+200: 615 (85.42%)
+404: 10 (1.39%)
+502: 40 (5.56%)
+503: 47 (6.53%)
+504: 8 (1.11%)
+Error rate (deduplicated): 105/720 = 14.58%
