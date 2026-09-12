@@ -118,8 +118,8 @@ def check_prohibited_ports_closed():
 def check_network_isolation():
     result = subprocess.run(
         ["docker", "compose", "-p", "barq-assessment", "exec", "-T", "nginx",
-         "sh", "-c", "getent hosts postgres"],
-        capture_output=True, text=True, timeout=10,
+         "sh", "-c", " timeout 3 getent hosts postgres"],
+        capture_output=True, text=True, timeout=8,
     )
     assert result.returncode != 0, (
         f"nginx can resolve 'postgres' hostname (should be isolated on backend network): "
