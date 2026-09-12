@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create config/app.env (synthetic lab credentials for CI)
+        run: |
+          cat > config/app.env << 'EOF'
+          DATABASE_URL=postgresql://barq_app:BarqLabOnly_7qN2vK8c@postgres:5432/barq_tasks
+          REDIS_URL=redis://redis:6379/0
+          EOF
+
+      - name: Create .env for docker compose (PUBLIC_PORT)
+        run: cp .env.example .env
+
+      - name: Validate docker-compose syntax
+        run: docker compose -p barq-assessment config
+
+      - name: Build images
+        run: docker compose -p barq-assessment build
+
+      - name: Start environment
+        run: docker compose -p barq-assessment up -d
+
+      - name: Wait for readiness
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:8080/ready > /dev/null; then
+              echo "Ready after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Environment never became ready"
+          exit 1
+
+      - name: Show container status
+        if: always()
+        run: docker compose -p barq-assessment ps -a
+
+      - name: Run validate.py
+        run: python3 validate.py
+
+      - name: Dump logs on failure
+        if: failure()
+        run: docker compose -p barq-assessment logs --no-color
+
+      - name: Tear down
+        if: always()
+        run: docker compose -p barq-assessment down -v
