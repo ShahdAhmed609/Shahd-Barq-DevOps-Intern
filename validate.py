@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
-#!/usr/bin/env python3
 """Environment validation: bounded checks with PASS/FAIL and non-zero exit on failure."""
 import sys
 import time
 import json
+import argparse
 import subprocess
 import urllib.request
 import urllib.error
 
-BASE_URL = "http://127.0.0.1:8080"
+parser = argparse.ArgumentParser()
+parser.add_argument("--url", default="http://127.0.0.1:8080", help="Base URL to test")
+parser.add_argument("--instances", default="app-01,app-02",
+                     help="Comma-separated list of expected instance IDs")
+parser.add_argument("--project", default="barq-assessment", help="Docker Compose project name")
+args = parser.parse_args()
+
+BASE_URL = args.url
+EXPECTED_INSTANCES = set(args.instances.split(","))
+PROJECT = args.project
 TIMEOUT = 3
 RESULTS = []
 
@@ -66,14 +75,17 @@ def check_ready():
     assert deps.get("redis") == "ready", f"redis not ready: {deps}"
 
 
-def check_instance_both_backends():
+def check_instance_all_backends():
     seen = set()
-    for _ in range(10):
+    tries = max(30, len(EXPECTED_INSTANCES) * 10)
+    for _ in range(tries):
         status, body = http_get("/instance")
         assert status == 200, f"expected 200, got {status}"
         data = json.loads(body)
         seen.add(data["instance_id"])
-    assert "app-01" in seen and "app-02" in seen, f"only saw instances: {seen}"
+        if EXPECTED_INSTANCES.issubset(seen):
+            break
+    assert EXPECTED_INSTANCES.issubset(seen), f"expected {EXPECTED_INSTANCES}, only saw: {seen}"
     return f"saw {seen}"
 
 
@@ -117,8 +129,8 @@ def check_prohibited_ports_closed():
 
 def check_network_isolation():
     result = subprocess.run(
-        ["docker", "compose", "-p", "barq-assessment", "exec", "-T", "nginx",
-         "sh", "-c", " timeout 3 getent hosts postgres"],
+        ["docker", "compose", "-p", PROJECT, "exec", "-T", "nginx",
+         "sh", "-c", "timeout 3 getent hosts postgres"],
         capture_output=True, text=True, timeout=8,
     )
     assert result.returncode != 0, (
@@ -128,13 +140,14 @@ def check_network_isolation():
 
 
 def main():
+    print(f"Testing against {BASE_URL}, expecting instances: {EXPECTED_INSTANCES}")
     print("Waiting for environment readiness (bounded, max 30s)...")
     check("environment becomes ready", wait_for_ready)
 
     check("GET / returns message + instance_id", check_root)
     check("GET /health returns 200", check_health)
     check("GET /ready confirms postgres+redis", check_ready)
-    check("GET /instance shows both app-01 and app-02 via nginx", check_instance_both_backends)
+    check(f"GET /instance shows all expected instances via nginx", check_instance_all_backends)
     check("POST/GET /records works (real Postgres)", check_records)
     check("GET /counter increments (real Redis)", check_counter)
     check("Unknown route returns 404", check_unknown_route_404)
